@@ -1,0 +1,31 @@
+<%- include("template/cabecera.ejs", {tituloWeb: "Crear entrenador" })%>
+<div class="mx-auto col-md-4 p-5 shadow rounded mt-4">
+        <h1>Crear nuevo entrenador</h1>
+        <form action="/entrenador" class="my-2" method="post">
+            <div class="form-group">
+                <label for="username">Nombre del entrenador:</label>
+                <input id="nombre" type="text" class="form-control" name="nombre">
+            </div>
+            <div class="form-group">
+                <label for="username">Edad de entrenador:</label>
+                <input type="text" class="form-control" name="edad">
+            </div>
+            <div class="form-group">
+                <label for="username">Biografia:</label>
+                <input type="text" class="form-control" name="biografia">
+            </div>
+            <div class="form-group">
+                <label for="username">Ciudad:</label>
+                <input type="text" class="form-control" name="ciudad">
+            </div>
+            <div class="form-group">
+                <label for="username">Lista de Pokémon:</label>
+                <input type="text" class="form-control" name="listaPokemon">
+            </div>
+            <button type="submit" class="btn btn-primary">Crear</button>
+            <button href="/" class="btn btn-danger">Cancelar</button>
+            <!-- no cancela la introduccion -->
+        </form>
+    </div>
+
+    <%- include("template/footer.ejs")%>

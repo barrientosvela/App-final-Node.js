@@ -1,0 +1,70 @@
+<%- include("template/cabecera.ejs", {tituloWeb: 'Detalles del Pokemon' }) %>
+    <div class="container">
+        <h1>Detalles del entrenador</h1>
+    </div>
+    <% if (!error) { %>
+        <div class="mx-auto col-md-4 p-5 shadow rounded mt-4">
+            <form id="editar" data-id="<%= entrenador.id %>">
+                <input type="text" value="<%= entrenador.nombre %>" class="form-control my-2" name="nombre"
+                    id="nombreInput">
+                <input type="text" value="<%= entrenador.edad %>" class="form-control my-2" name="edad" id="tipoInput">
+                <input type="text" value="<%= entrenador.biografia %>" class="form-control my-2" name="biografia" id="descripcionInput">
+                <input type="text" value="<%= entrenador.ciudad %>" class="form-control my-2" name="ciudad" id="tipoInput">
+                <input type="text" value="<%= entrenador.listaPokemon %>" class="form-control my-2" name="listaPokemon"
+                    id="descripcionInput">
+                <button class="btn btn-warning btn-sm" type="submit">
+                    Editar
+                </button>
+            </form>
+        </div>
+        <hr>
+        <button class="btn btn-danger btn-sm" data-id="<%= entrenador.id %>">
+            Eliminar
+        </button>
+        <% } %>
+
+            <%- include("template/footer.ejs") %>
+                <script>
+                    const formEditar = document.querySelector('#editar');
+                    formEditar.addEventListener('submit', async (e) => {
+                        e.preventDefault()
+                        const nombre = formEditar.elements['nombre'].value
+                        const edad = formEditar.elements['edad'].value
+                        const biografia = formEditar.elements['biografia'].value
+                        const ciudad = formEditar.elements['ciudad'].value
+                        const listaPokemon = formEditar.elements['listaPokemon'].value
+                        const id = formEditar.dataset.id
+                        const data = await fetch(`/entrenador/${id}`, {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ nombre, edad, biografia, ciudad, listaPokemon })
+                        })
+                        const res = await data.json()
+                        if (res.estado) {
+                            window.location.href = '/entrenador'
+                        } else {
+                            console.log(res)
+                        }
+                    })
+
+                    const btnEliminar = document.querySelector('.btn-danger')
+                    btnEliminar.addEventListener('click', async () => {
+                        console.log(btnEliminar.dataset.id)
+                        try {
+                            const data = await fetch(`/entrenador/${btnEliminar.dataset.id}`, {
+                                method: 'delete'
+                            })
+                            const res = await data.json()
+                            console.log(res)
+                            if (res.estado) {
+                                window.location.href = '/entrenador'
+                            } else {
+                                console.log(res)
+                            }
+                        } catch (error) {
+                            console.log(error)
+                        }
+                    })
+                </script>

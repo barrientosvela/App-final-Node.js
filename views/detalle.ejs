@@ -1,0 +1,79 @@
+<%- include("template/cabecera.ejs", {tituloWeb: 'Detalles del Pokemon' }) %>
+    <div class="container">
+        <h1>Detalles del Pokémon</h1>
+    </div>
+    <% if (!error) { %>
+        <div class="mx-auto col-md-4 p-5 shadow rounded mt-4">
+            <form id="editar" data-id="<%= pokemon.id %>">
+                <div class="form-group">
+                    <label for="username">Nombre del pokemon:</label>
+                    <input type="text" value="<%= pokemon.nombre %>" class="form-control my-2" name="nombre"
+                        id="nombreInput">
+                </div>
+                <div class="form-group">
+                    <label for="username">Tipo:</label>
+                    <input type="text" value="<%= pokemon.tipo %>" class="form-control my-2" name="tipo" id="tipoInput">
+                </div>
+                <div class="form-group">
+                    <label for="username">Descripción:</label>
+                    <input type="text" value="<%= pokemon.descripcion %>" class="form-control my-2" name="descripcion"
+                        id="descripcionInput">
+                </div>
+                <div class="form-group">
+                    <label for="username">Acción:</label>
+                    <input type="text" value="<%= pokemon.accion %>" class="form-control my-2" name="tipo" id="tipoInput">
+                </div>
+                <button class="btn btn-warning btn-sm" type="submit">
+                    Editar
+                </button>
+                <button class="btn btn-danger btn-sm" data-id="<%= pokemon.id %>">
+                    Eliminar
+                </button>
+            </form>
+        </div>
+        <% } %>
+
+            <%- include("template/footer.ejs") %>
+                <script>
+                    const formEditar = document.querySelector('#editar');
+                    formEditar.addEventListener('submit', async (e) => {
+                        e.preventDefault()
+                        const nombre = formEditar.elements['nombre'].value
+                        const tipo = formEditar.elements['tipo'].value
+                        const descripcion = formEditar.elements['descripcion'].value
+                        const id = formEditar.dataset.id
+                        const data = await fetch(`/pokemon/${id}`, {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ nombre, tipo, descripcion })
+                        })
+                        const res = await data.json()
+                        if (res.estado) {
+                            window.location.href = '/pokemon'
+                        } else {
+                            console.log(res)
+                        }
+                    })
+
+                    const btnEliminar = document.querySelector('.btn-danger')
+                    btnEliminar.addEventListener('click', async () => {
+                        console.log(btnEliminar.dataset.id)
+                        try {
+                            // https://developer.mozilla.org/es/docs/Web/API/HTMLElement/dataset
+                            const data = await fetch(`/pokemon/${btnEliminar.dataset.id}`, {
+                                method: 'delete'
+                            })
+                            const res = await data.json()
+                            console.log(res)
+                            if (res.estado) {
+                                window.location.href = '/pokemon'
+                            } else {
+                                console.log(res)
+                            }
+                        } catch (error) {
+                            console.log(error)
+                        }
+                    })
+                </script>

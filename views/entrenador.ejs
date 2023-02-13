@@ -1,0 +1,48 @@
+<%- include("template/cabecera.ejs", {tituloWeb: "Lista de entrenadores" })%>
+
+    <div class="container">
+        <!-- Será el listado de pokemon -->
+        <div class="container">
+            <h1>CRUD Mongo</h1>
+            <a class="btn btn-success my-4" href="/entrenador/crear-entrenador">Crear nuevo entrenador</a>
+            <a class="btn btn-primary my-4" href="/">Inicio</a>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <% if (arrayEntrenador.length> 0) { %>
+                    <!--Haremos el foreach para recorrer el array-->
+                    <% arrayEntrenador.forEach(entrenador=> { %>
+                        <div class="col-4 p-3">
+                            <div class="card shadow-sm">
+                                <img src="../images/entrenador.jpg" alt="pokeball">
+                                <div class="card-body">
+                                    <h1>
+                                        <%= entrenador.nombre %>
+                                    </h1>
+                                    <h3>
+                                        Edad: <%= entrenador.edad %>
+                                    </h3>
+                                    <h3>
+                                        Ciudad: <%= entrenador.ciudad%>
+                                    </h3>
+                                    <h3>Lista de Pokemon:</h3>
+                                    <ul>
+                                        <li><%= entrenador.listaPokemon%></li>
+                                    </ul> 
+                                    <p class="card-text">
+                                        <%= entrenador.biografia %>
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a class="btn btn-warning btn-sm"
+                                                href="entrenador/<%= entrenador.id %>">Editar/Eliminar</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>
+                            <% } %>
+            </div>
+        </div>
+    </div>
+
+    <%- include("template/footer.ejs")%>

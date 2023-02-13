@@ -1,0 +1,27 @@
+<%- include("template/cabecera.ejs", {tituloWeb: "Crear Pokemones" })%>
+<div class="mx-auto col-md-4 p-5 shadow rounded mt-4">
+        <h1>Crear nuevo Pokemon</h1>
+        <form action="/pokemon" class="my-2" method="post">
+            <div class="form-group">
+                <label for="username">Nombre del pokemon:</label>
+                <input id="nombre" type="text" class="form-control" name="nombre">
+            </div>
+            <div class="form-group">
+                <label for="username">Tipo:</label>
+                <input type="text" class="form-control" name="tipo">
+            </div>
+            <div class="form-group">
+                <label for="username">Descripción:</label>
+                <input type="text" class="form-control" name="descripcion">
+            </div>
+            <div class="form-group">
+                <label for="username">Acción:</label>
+                <input type="text" class="form-control" name="accion">
+            </div>
+            <button type="submit" class="btn btn-primary">Crear</button>
+            <button href="/" class="btn btn-danger">Cancelar</button>
+            <!-- no cancela la introduccion -->
+        </form>
+    </div>
+
+    <%- include("template/footer.ejs")%>
