@@ -24,12 +24,4 @@ body{
     height: 30px;
     margin: 5px;
 }
-#img-carrusel{
-    max-width: 100%;
-    height: auto;
-    position: absolute;
-    bottom: 0;
-}
-.carousel-control-prev, .carousel-control-next{
-    border: 0;
-}
+
