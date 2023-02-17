@@ -29,7 +29,7 @@ app.set('view engine', 'ejs');
 
 //Peticiones básicas HTTP
 app.use('/', require('./router/rutas'))
-app.use('/pokemon', require('./router/pokemon'))
+app.use('/libros', require('./router/libros'))
 app.use('/entrenador', require('./router/entrenador'))
 
 app.listen(port, () => {

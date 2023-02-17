@@ -1,6 +1,6 @@
 const express = require('express');
+const Libros = require('../models/libros');
 const router = express.Router();
-const Pokemon = require('../models/pokemon');
 
 router.get('/crear', (req, res) => {
     res.render('crear'); //nueva vista que llamaremos Crear
@@ -8,13 +8,10 @@ router.get('/crear', (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-        //Le pondremos arrayPokemonDB para diferenciar
-        //los datos que vienen de la base de datos
-        //con respecto al arrayPokemon que tenemos EN LA VISTA
-        const arrayPokemonDB = await Pokemon.find();
-        console.log(arrayPokemonDB);
-        res.render("pokemon", {
-            arrayPokemon: arrayPokemonDB
+        const arrayLibroDB = await Libros.find();
+        console.log(arrayLibroDB);
+        res.render("libros", {
+            arrayLibro: arrayLibroDB
         })
     } catch (error) {
         console.error(error)
@@ -92,9 +89,9 @@ router.put('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
     const body = req.body
     try {
-        const pokemonDB = new Pokemon(body)
-        await pokemonDB.save()
-        res.redirect('/pokemon')
+        const librosDB = new Libros(body)
+        await librosDB.save()
+        res.redirect('/libros')
     } catch {
         console.log('error', error)
     }

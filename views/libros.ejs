@@ -1,37 +1,31 @@
-<%- include("template/cabecera.ejs", {tituloWeb: "Lista de Pokemones" })%>
+<%- include("template/cabecera.ejs", {tituloWeb: "Lista de Libros" })%>
 
     <div class="container">
         <!-- Será el listado de pokemon -->
         <div class="container">
             <h1>CRUD Mongo</h1>
-            <a class="btn btn-success my-4" href="/pokemon/crear">Crear nuevo Pokemon</a>
+            <a class="btn btn-success my-4" href="/pokemon/crear">Crear nuevo2 Pokemon</a>
             <a class="btn btn-primary my-4" href="/">Inicio</a>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <% if (arrayPokemon.length> 0) { %>
+                <% if (arrayLibro.length> 0) { %>
                     <!--Haremos el foreach para recorrer el array-->
-                    <% arrayPokemon.forEach(pokemon=> { %>
+                    <% arrayLibro.forEach(libro=> { %>
                         <div class="col-4 p-3">
                             <div class="card shadow-sm">
                                 <img class="bd-placeholder-img card-img-top" src="../images/neon-pokeball.jpg" alt="pokeball">
                                 <div class="card-body">
                                     <h1>
-                                        <%= pokemon.nombre %>
+                                        <%= libro.titulo %>
                                     </h1>
                                     <h3>
-                                        <%= pokemon.tipo %>
+                                        <%= libro.autor %>
                                     </h3>
                                     <h3>
-                                        <%= pokemon.ataque%>
+                                        <%= libro.genero%>
                                     </h3>
                                     <p class="card-text">
-                                        <%= pokemon.descripcion %>
+                                        Número de páginas:<%= libro.paginas %>
                                     </p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <a class="btn btn-warning btn-sm"
-                                                href="pokemon/<%= pokemon.id %>">Editar/Eliminar</a>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 const express = require('express'); //Requerimos Express
 const Pokemon = require('../models/pokemon');
-const Entrenador = require('../models/entrenador')
+const Libros = require('../models/libros');
 const router = express.Router();
 
 
@@ -10,7 +10,7 @@ const router = express.Router();
 // Importante que ya no usaremos el app.get(...), ahora
 //vamos a utilizar las rutas, por lo que deberemos poner:
 router.get('/', (req, res) => {
-    res.render("index")
+    res.render("inicio")
 })
 router.get('/contacto', (req, res) => {
     res.render("contacto", { tituloContacto: "Estamos en contacto de manera dinámica!!" })
@@ -19,9 +19,9 @@ router.get('/contacto', (req, res) => {
 router.post('/', async (req, res) => {
     const body = req.body
     try {
-        const pokemonDB = new Pokemon(body)
-        await pokemonDB.save()
-        res.redirect('/pokemon')
+        const librosDB = new Libros(body)
+        await librosDB.save()
+        res.redirect('/libros')
     } catch (error) {
         console.log('Error: ', error)
     }
