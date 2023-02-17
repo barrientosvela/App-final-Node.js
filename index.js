@@ -1,4 +1,3 @@
-
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
@@ -30,7 +29,8 @@ app.set('view engine', 'ejs');
 //Peticiones básicas HTTP
 app.use('/', require('./router/rutas'))
 app.use('/libros', require('./router/libros'))
-app.use('/entrenador', require('./router/entrenador'))
+app.use('/autores', require('./router/autores'))
+app.use('/editoriales', require('./router/editoriales'))
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

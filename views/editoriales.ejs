@@ -1,0 +1,32 @@
+<%- include("template/cabecera.ejs", {tituloWeb: "Lista de editoriales" })%>
+
+    <div class="container">
+        <!-- Será el listado de pokemon -->
+        <div class="container">
+            <h1 class="p-5 text-center">Todas las editoriales</h1>
+            <a class="btn btn-success my-4" href="/entrenador/crear-entrenador">Crear nueva editorial</a>
+            <a class="btn btn-primary my-4" href="/">Inicio</a>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <% if (arrayEditoria.length> 0) { %>
+                    <!--Haremos el foreach para recorrer el array-->
+                    <% arrayEditoria.forEach(editotial=> { %>
+                        <div class="col-4 p-3">
+                            <div class="card shadow-sm">
+                                <img src="../images/entrenador.jpg" alt="pokeball">
+                                <div class="card-body">
+                                    <h1>
+                                        <%= editotial.nombre %>
+                                    </h1>
+                                    <p class="card-text">
+                                        <%= editotial.descripcion %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>
+                            <% } %>
+            </div>
+        </div>
+    </div>
+
+    <%- include("template/footer.ejs")%>

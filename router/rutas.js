@@ -1,6 +1,7 @@
 const express = require('express'); //Requerimos Express
-const Pokemon = require('../models/pokemon');
-const Libros = require('../models/libros');
+const Libro = require('../models/libros');
+const Autor = require('../models/autores');
+const Editorial = require('../models/editoriales');
 const router = express.Router();
 
 
@@ -19,7 +20,7 @@ router.get('/contacto', (req, res) => {
 router.post('/', async (req, res) => {
     const body = req.body
     try {
-        const librosDB = new Libros(body)
+        const librosDB = new Libro(body)
         await librosDB.save()
         res.redirect('/libros')
     } catch (error) {
@@ -29,13 +30,22 @@ router.post('/', async (req, res) => {
 router.post('/', async (req, res) => {
     const body = req.body
     try {
-        const entrenadorDB = new Entrenador(body)
-        await entrenadorDB.save()
-        res.redirect('/entrenador')
+        const autorDB = new Autor(body)
+        await autorDB.save()
+        res.redirect('/autores')
     } catch (error) {
         console.log('Error: ', error)
     }
 })
-
+router.post('/', async (req, res) => {
+    const body = req.body
+    try {
+        const editorialDB = new Editorial(body)
+        await editorialDB.save()
+        res.redirect('/editoriales')
+    } catch (error) {
+        console.log('Error: ', error)
+    }
+})
 // Por último, vamos a exportarlo:
 module.exports = router;

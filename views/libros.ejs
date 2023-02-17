@@ -3,8 +3,11 @@
     <div class="container">
         <!-- Será el listado de pokemon -->
         <div class="container">
-            <h1>CRUD Mongo</h1>
-            <a class="btn btn-success my-4" href="/pokemon/crear">Crear nuevo2 Pokemon</a>
+            <h1 class="p-5 text-center">Todos los libros</h1>
+            <% //if (usuario.admin == "si") {%>
+            <a class="btn btn-success my-4" href="/libros/crear">Crear nuevo libro</a>
+            <% //} %>
+             
             <a class="btn btn-primary my-4" href="/">Inicio</a>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <% if (arrayLibro.length> 0) { %>
@@ -12,7 +15,8 @@
                     <% arrayLibro.forEach(libro=> { %>
                         <div class="col-4 p-3">
                             <div class="card shadow-sm">
-                                <img class="bd-placeholder-img card-img-top" src="../images/neon-pokeball.jpg" alt="pokeball">
+                                <img class="bd-placeholder-img card-img-top" src="../images/neon-pokeball.jpg"
+                                    alt="pokeball">
                                 <div class="card-body">
                                     <h1>
                                         <%= libro.titulo %>

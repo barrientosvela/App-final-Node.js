@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +9,7 @@
     <%= tituloWeb %>
   </title>
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/basic.css">
   <link rel="stylesheet" href="/css/carousel.css">
 </head>
 
@@ -22,9 +23,9 @@
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="/" class="nav-link px-3 text-white">Inicio</a></li>
-          <li><a href="/libros" class="nav-link px-3 text-white">Novedades</a></li>
-          <li><a href="#" class="nav-link px-3 text-white">Recomendados</a></li>
-          <li><a href="#" class="nav-link px-3 text-white">Más leidos</a></li>
+          <li><a href="/libros" class="nav-link px-3 text-white">Biblioteca</a></li>
+          <li><a href="/autores" class="nav-link px-3 text-white">Autores</a></li>
+          <li><a href="/editoriales" class="nav-link px-3 text-white">Editoriales</a></li>
           <li><a href="/contacto" class="nav-link px-3 text-white">Sobre nosotros</a></li>
         </ul>
 
@@ -32,11 +33,78 @@
           <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..."
             aria-label="Search" name="buscar">
         </form>
-
-        <div class="text-end">
-          <a href="registro.html"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
-          <a href="#"><button type="button" class="btn btn-warning">Sign-up</button></a>
-        </div>
+        <script>
+          const user = $("#user").val();
+          const pass = $("#pass").val();
+        </script>
+        <% //if (arrayUsuario.length> 0) { %>
+          <!--Haremos el foreach para recorrer el array-->
+          <% //arrayUsuario.forEach(user=> { %>
+            <% //if (user.nick==user || user.email==user && user.password==pass){%>
+              <!-- <div class="dropdown text-end">
+                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                  <p><% //user.nombre %></p>
+                </a>
+                <ul class="dropdown-menu text-small">
+                  <li><a class="dropdown-item" href="#">Mi perfil</a></li>
+                  <li><a class="dropdown-item" href="#">Configuración</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                </ul>
+              </div> -->
+              <% //}else{ %>
+                <div class="text-end">
+                  <button type="button" class="btn btn-outline-light me-2" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal" data-bs-whatever="@mdo">Login</button>
+                  <a href="registro.html"><button type="button" class="btn btn-warning">Sign-up</button></a>
+                </div>
+                <% //} %>
+                  <% //}) %>
+                    <% //} %>
       </div>
     </div>
   </header>
+  <!-- Login -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Acceso Usuario</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form method="$_REQUEST" action="#">
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Usuario / Email:</label>
+              <input type="text" class="form-control" id="user" name="user">
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Contraseña:</label>
+              <input type="password" class="form-control" id="pass" name="pass">
+            </div>
+            <div class="mx-3 py-2 bordert">
+              <div class="text-center py-3">
+                <a href="https://wwww.facebook.com" target="_blank" class="px-2"> <img
+                    src="https://www.dpreview.com/files/p/articles/4698742202/facebook.jpeg" alt=""> </a>
+                <a href="https://www.google.com" target="_blank" class="px-2"> <img
+                    src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png"
+                    alt=""> </a>
+                <a href="https://www.github.com" target="_blank" class="px-2"> <img
+                    src="https://www.freepnglogos.com/uploads/512x512-logo-png/512x512-logo-github-icon-35.png" alt="">
+                </a>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Login</button>
+              <a href="registro.html"><button type="button" class="btn btn-secondary"
+                  data-bs-dismiss="modal">Registrate</button></a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

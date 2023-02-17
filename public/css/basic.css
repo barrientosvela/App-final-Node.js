@@ -1,0 +1,54 @@
+@font-face {
+    font-family: 'callista';
+    src: url('../fonts/Callista\ Italic.ttf') format('truetype');
+}
+
+body{
+    padding: 0;
+    margin: 0;
+}
+
+#titulo {
+    font-family: 'callista';
+    font-size: 45px;
+}
+
+#img-error {
+    width: 100%;
+    padding-right: 200px;
+    padding-left: 200px;
+}
+
+#rrss {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+}
+/* login */
+.bordert {
+    border-top: 1px solid #aaa;
+    position: relative;
+    margin-top: 16px;
+    margin-bottom: 5px;
+}
+
+.bordert:after {
+    content: "or connect with";
+    position: absolute;
+    top: -13px;
+    left: 33%;
+    background-color: #fff;
+    padding: 0px 8px;
+}
+
+.bordert img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    position: relative
+}
+
+.bordert a {
+    text-decoration: none;
+}

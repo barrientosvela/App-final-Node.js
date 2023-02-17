@@ -1,6 +1,5 @@
 const express = require('express');
-const Entrenador = require('../models/libros');
-const Pokemon = require('../models/pokemon');
+const Editorial = require('../models/editoriales');
 const router = express.Router();
 
 router.get('/crear-entrenador', (req, res) => {
@@ -12,10 +11,9 @@ router.get('/', async (req, res) => {
         //Le pondremos arrayPokemonDB para diferenciar
         //los datos que vienen de la base de datos
         //con respecto al arrayPokemon que tenemos EN LA VISTA
-        const arrayEntrenadorDB = await Entrenador.find();
-        console.log(arrayEntrenadorDB);
-        res.render("entrenador", {
-            arrayEntrenador: arrayEntrenadorDB
+        const arrayEditoriaDB = await Editorial.find();
+        res.render("editoriales", {
+            arrayEditoria: arrayEditoriaDB
         })
     } catch (error) {
         console.error(error)
@@ -93,9 +91,9 @@ router.put('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
     const body = req.body
     try {
-        const entrenadorDB = new Entrenador(body)
-        await entrenadorDB.save()
-        res.redirect('/entrenador')
+        const editorialesDB = new Editorial(body)
+        await editorialesDB.save()
+        res.redirect('/editoriales')
     } catch {
         console.log('error', error)
     }
