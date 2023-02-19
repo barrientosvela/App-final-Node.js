@@ -25,7 +25,6 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-
 //Peticiones básicas HTTP
 app.use('/', require('./router/rutas'))
 app.use('/libros', require('./router/libros'))

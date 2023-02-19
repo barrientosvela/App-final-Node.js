@@ -3,7 +3,7 @@
     src: url('../fonts/Callista\ Italic.ttf') format('truetype');
 }
 
-body{
+body {
     padding: 0;
     margin: 0;
 }
@@ -24,7 +24,11 @@ body{
     height: 30px;
     margin: 5px;
 }
+
 /* login */
+#login{
+    float: right;
+}
 .bordert {
     border-top: 1px solid #aaa;
     position: relative;
@@ -51,4 +55,36 @@ body{
 
 .bordert a {
     text-decoration: none;
+}
+
+/* editar */
+#img-cancelar {
+    width: 30px;
+    height: 30px;
+}
+
+.cancelar {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    float: right;
+}
+
+#img-editar {
+    width: 30px;
+    height: 30px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    float: right;
+}
+
+.borrar {
+    float: right;
+}
+
+#img-borrar,
+#img-confirmar,
+#img-añadir {
+    width: 50px;
+    height: 50px;
 }

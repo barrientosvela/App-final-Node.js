@@ -1,6 +1,10 @@
 <%- include("template/cabecera.ejs", {tituloWeb: "Crear libro" })%>
 <div class="mx-auto col-md-4 p-5 shadow rounded mt-4">
         <h1>Crear nuevo Libro</h1>
+        <div class="cancelar">
+            <a href="/libros" id="img-cancelar"><img id="img-cancelar" src="../images/cerrar.png"
+                    alt="cancelar"></a>
+        </div>
         <form action="/libros" class="my-2" method="post">
             <div class="form-group">
                 <label for="username">Titulo del libro:</label>
@@ -18,9 +22,7 @@
                 <label for="username">Número de páginas:</label>
                 <input type="text" class="form-control" name="paginas">
             </div>
-            <button type="submit" class="btn btn-primary">Crear</button>
-            <button href="/" class="btn btn-danger">Cancelar</button>
-            <!-- no cancela la introduccion -->
+            <button type="submit" class="btn"><img id="img-añadir" src="../images/mas.png" alt="añadir"></button>
         </form>
     </div>
 

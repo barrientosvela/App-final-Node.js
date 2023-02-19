@@ -2,8 +2,8 @@ const express = require('express');
 const Editorial = require('../models/editoriales');
 const router = express.Router();
 
-router.get('/crear-entrenador', (req, res) => {
-    res.render('crear-entrenador'); //nueva vista que llamaremos Crear
+router.get('/crear-editorial', (req, res) => {
+    res.render('crear-editorial'); //nueva vista que llamaremos Crear
 })
 
 router.get('/', async (req, res) => {
@@ -23,19 +23,19 @@ router.get('/:id', async (req, res) => { //El id vendrá por el GET (barra de di
     const id = req.params.id //Recordemos que en la plantilla "pokemon.ejs" le pusimos
     //a este campo pokemon.id, por eso lo llamados con params.id
     try {
-        const entrenadorDB = await Entrenador.findOne({ _id: id }) //_id porque así lo indica Mongo
+        const editorialDB = await Editorial.findOne({ _id: id }) //_id porque así lo indica Mongo
         //Esta variable “Pokemon” está definida arriba con el “require”
         //Buscamos con Mongoose un único documento que coincida con el id indicado
-        console.log(entrenadorDB) //Para probarlo por consola
-        res.render('detalle-entrenador', { //Para mostrar el objeto en la vista "detalle", que tenemos que crear
-            entrenador: entrenadorDB,
+        console.log(editorialDB) //Para probarlo por consola
+        res.render('editar-editorial', { //Para mostrar el objeto en la vista "detalle", que tenemos que crear
+            editorial: editorialDB,
             error: false
         })
     } catch (error) { //Si el id indicado no se encuentra
         console.log('Se ha producido un error', error)
-        res.render('detalle-entrenador', { //Mostraremos el error en la vista "detalle"
+        res.render('editar-editorial', { //Mostraremos el error en la vista "detalle"
             error: true,
-            mensaje: 'entrenador no encontrado!'
+            mensaje: 'La editorial no encontrado!'
         })
     }
 })
@@ -45,19 +45,19 @@ router.delete('/:id', async (req, res) => {
     try {
         //En la documentación de Mongoose podremos encontrar la
         //siguiente función para eliminar
-        const entrenadorDB = await Entrenador.findByIdAndDelete({ _id: id });
-        console.log(entrenadorDB)
+        const editorialDB = await Editorial.findByIdAndDelete({ _id: id });
+        console.log(editorialDB)
         // https://stackoverflow.com/questions/27202075/expressjs-res-redirect-not-working-as-expected
-        // res.redirect('/entrenador') //Esto daría un error, tal y como podemos ver arriba
-        if (!entrenadorDB) {
+        // res.redirect('/editorial') //Esto daría un error, tal y como podemos ver arriba
+        if (!editorialDB) {
             res.json({ 
                 estado: false,
-                mensaje: 'No se puede eliminar el entrenador.'
+                mensaje: 'No se puede eliminar la editorial.'
             })
         } else {
             res.json({
                 estado: true,
-                mensaje: 'entrenador eliminado.'
+                mensaje: 'Editorial eliminada.'
             })
         } 
     } catch (error) {
@@ -70,19 +70,19 @@ router.put('/:id', async (req, res) => {
     console.log(id)
     console.log('body', body)
     try {
-        const entrenadorDB = await Entrenador.findByIdAndUpdate(
+        const editorialDB = await Editorial.findByIdAndUpdate(
             id, body, { useFindAndModify: false }
         )
-        console.log(entrenadorDB)
+        console.log(editorialDB)
         res.json({
             estado: true,
-            mensaje: 'entrenador editado'
+            mensaje: 'Editorial editada'
         })
     } catch (error) {
         console.log(error)
         res.json({
             estado: false,
-            mensaje: 'Problema al editar el entrenador'
+            mensaje: 'Problema al editar la editorial'
         })
     }
 })

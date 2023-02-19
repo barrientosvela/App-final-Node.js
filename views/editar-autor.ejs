@@ -1,0 +1,71 @@
+<%- include("template/cabecera.ejs", {tituloWeb: 'Detalles de la Autor' }) %>
+    <div class="container">
+        <h1 class="p-5 text-center">Editar Autor</h1>
+    </div>
+    <% if (!error) { %>
+        <div class="mx-auto col-md-4 p-5 shadow rounded mt-4">
+            <form id="editar" data-id="<%= autor.id %>">
+                <div class="cancelar">
+                    <a href="/autores" id="img-cancelar"><img id="img-cancelar" src="../images/cerrar.png"
+                            alt="cancelar"></a>
+                </div>
+                <div class="form-group">
+                    <label for="username">Nombre del Autor:</label>
+                    <input type="text" value="<%= autor.nombre %>" class="form-control my-2" name="nombre"
+                        id="nombreInput">
+                </div>
+                <div class="form-group">
+                    <label for="username">Descripción:</label>
+                    <input type="text" value="<%= autor.descripcion %>" class="form-control my-2" name="descripcion" id="tipoInput">
+                </div>
+                <button class="btn btn-sm" type="submit">
+                    <img id="img-confirmar" src="../images/cheque.png" alt="confirmar">
+                </button>
+                <button class="btn borrar btn-sm" data-id="<%= autor.id %>">
+                    <img id="img-borrar" src="../images/eliminar.png" alt="eliminar">
+                </button>
+            </form>
+        </div>
+        <% } %>
+
+            <%- include("template/footer.ejs") %>
+                <script>
+                    const formEditar = document.querySelector('#editar');
+                    formEditar.addEventListener('submit', async (e) => {
+                        e.preventDefault()
+                        const nombre = formEditar.elements['nombre'].value
+                        const descripcion = formEditar.elements['descripcion'].value
+                        const id = formEditar.dataset.id
+                        const data = await fetch(`/autores/${id}`, {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ nombre, descripcion})
+                        })
+                        const res = await data.json()
+                        if (res.estado) {
+                            window.location.href = '/autores'
+                        } else {
+                            console.log(res)
+                        }
+                    })
+
+                    const btnEliminar = document.querySelector('.borrar')
+                    btnEliminar.addEventListener('click', async () => {
+                        try {
+                            const data = await fetch(`/autores/${btnEliminar.dataset.id}`, {
+                                method: 'delete'
+                            })
+                            const res = await data.json()
+                            console.log(res)
+                            if (res.estado) {
+                                window.location.href = '/autores'
+                            } else {
+                                console.log(res)
+                            }
+                        } catch (error) {
+                            console.log(error)
+                        }
+                    })
+                </script>

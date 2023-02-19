@@ -1,0 +1,21 @@
+<%- include("template/cabecera.ejs", {tituloWeb: "Crear libro" })%>
+<div class="mx-auto col-md-4 p-5 shadow rounded mt-4">
+        <h1>Crear nuevo Autor</h1>
+        <div class="cancelar">
+            <a href="/autores" id="img-cancelar"><img id="img-cancelar" src="../images/cerrar.png"
+                    alt="cancelar"></a>
+        </div>
+        <form action="/autores" class="my-2" method="post">
+            <div class="form-group">
+                <label for="username">Nombre del Autor:</label>
+                <input id="nombre" type="text" class="form-control" name="nombre">
+            </div>
+            <div class="form-group">
+                <label for="username">Descripción:</label>
+                <input type="text" class="form-control" name="descripcion">
+            </div>
+            <button type="submit" class="btn"><img id="img-añadir" src="../images/mas.png" alt="añadir"></button>
+        </form>
+    </div>
+
+    <%- include("template/footer.ejs")%>

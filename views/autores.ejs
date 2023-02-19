@@ -4,16 +4,16 @@
         <!-- Será el listado de pokemon -->
         <div class="container">
             <h1 class="p-5 text-center">Todos los autores</h1>
-            <a class="btn btn-success my-4" href="/entrenador/crear-entrenador">Crear nuevo autor</a>
-            <a class="btn btn-primary my-4" href="/">Inicio</a>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <% if (arrayAutor.length> 0) { %>
                     <!--Haremos el foreach para recorrer el array-->
                     <% arrayAutor.forEach(autor=> { %>
                         <div class="col-4 p-3">
                             <div class="card shadow-sm">
-                                <img src="../images/entrenador.jpg" alt="pokeball">
+                                <img src="../images/autor-ejemplo.jpg" alt="pokeball">
                                 <div class="card-body">
+                                    <a href="autores/<%= autor.id %>"><img id="img-editar"
+                                        src="../images/editar.png" alt="editar"></a>
                                     <h1>
                                         <%= autor.nombre %>
                                     </h1>
@@ -26,6 +26,7 @@
                         <% }) %>
                             <% } %>
             </div>
+            <a class="btn btn-success my-4" href="/autores/crear-autor">Crear nuevo autor</a>
         </div>
     </div>
 
