@@ -3,7 +3,7 @@ const Libros = require('../models/libros');
 const router = express.Router();
 
 router.get('/crear', (req, res) => {
-    res.render('crear'); //nueva vista que llamaremos Crear
+    res.render('crear-libro'); //nueva vista que llamaremos Crear
 })
 
 router.get('/', async (req, res) => {
