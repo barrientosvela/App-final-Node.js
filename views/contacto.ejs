@@ -1,6 +1,51 @@
 <%- include("template/cabecera.ejs", {tituloWeb: "Contacto" })%>
 
-    <h2>Una view del contacto</h2>
-    <h2><%=tituloContacto%></h2>
+    <h1 class="p-5 text-center">Bienvenidos a Librería Invent</h1>
+    <div class="container">
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading fw-normal lh-1">Nuestra Historia <span class="text-muted"></span></h2>
+                <p class="lead">"Librería Invent" fue fundada en 1995 por dos apasionados de los libros, Ana y Pedro.
+                    Ambos querían compartir su amor por la lectura con la comunidad local y ofrecer una amplia variedad
+                    de
+                    libros a precios asequibles.</p>
+            </div>
+            <div class="col-md-5">
+                <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto pt-5" width="500"
+                    height="500" src="/images/historia.jpg" alt="">
+            </div>
+        </div>
+        <hr>
+        <div class="row featurette">
+            <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading fw-normal lh-1">Nuestros Valores <span class="text-muted"></span></h2>
+                <p class="lead">En "Librería Invent" nos esforzamos por ofrecer un servicio excepcional a nuestros
+                    clientes. Valoramos la honestidad, la responsabilidad y la pasión por los libros. Nos aseguramos de
+                    mantener nuestro catálogo actualizado y de tener personal altamente capacitado que pueda brindar
+                    recomendaciones y asistencia a nuestros clientes.</p>
+            </div>
+            <div class="col-md-5 order-md-1">
+                <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto pt-5" width="500"
+                    height="500" src="/images/valores.jpg" alt="">
+            </div>
+        </div>
+        <hr>
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading fw-normal lh-1">Contacto <span class="text-muted"></span></h2>
+                <p class="lead">¡Nos encantaría saber de ti! Si tienes alguna pregunta o comentario sobre nuestros
+                    productos
+                    o servicios, no dudes en ponerte en contacto con nosotros. Puedes visitarnos en nuestra tienda,
+                    llamarnos o enviarnos un correo electrónico. ¡Estamos aquí para ayudarte!</p>
+                <p class="lead">Dirección: Calle Invent 123, Sevilla, España</p>
+                <p class="lead">Teléfono: +34 123-123-123</p>
+                <p class="lead">Correo electrónico: info@libreriainvent.com</p>
+            </div>
+            <div class="col-md-5 pt-5">
+                <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto pt-5" width="500"
+                    height="500" src="/images/contacto.jpg" alt="">
+            </div>
+        </div>
+    </div>
 
-<%- include("template/footer.ejs")%>
+    <%- include("template/footer.ejs")%>

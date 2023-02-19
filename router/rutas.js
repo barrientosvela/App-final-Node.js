@@ -17,7 +17,7 @@ router.get('/registro', (req, res) => {
     res.render("registro")
 })
 router.get('/contacto', (req, res) => {
-    res.render("contacto", { tituloContacto: "Estamos en contacto de manera dinámica!!" })
+    res.render("contacto")
 })
 
 router.post('/', async (req, res) => {

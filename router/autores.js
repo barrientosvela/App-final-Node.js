@@ -3,14 +3,12 @@ const Autor = require('../models/autores');
 const router = express.Router();
 
 router.get('/crear-autor', (req, res) => {
-    res.render('crud/crear-autor'); //nueva vista que llamaremos Crear
+    res.render('crud/crear-autor');
 })
 
 router.get('/', async (req, res) => {
     try {
-        //Le pondremos arrayPokemonDB para diferenciar
-        //los datos que vienen de la base de datos
-        //con respecto al arrayPokemon que tenemos EN LA VISTA
+        // Array de campos en la DB para usarlo en la vista
         const arrayAutorDB = await Autor.find();
         res.render("autores", {
             arrayAutor: arrayAutorDB
@@ -20,14 +18,11 @@ router.get('/', async (req, res) => {
     }
 })
 router.get('/:id', async (req, res) => { //El id vendrá por el GET (barra de direcciones)
-    const id = req.params.id //Recordemos que en la plantilla "pokemon.ejs" le pusimos
-    //a este campo pokemon.id, por eso lo llamados con params.id
+    const id = req.params.id
     try {
-        const autorDB = await Autor.findOne({ _id: id }) //_id porque así lo indica Mongo
-        //Esta variable “Pokemon” está definida arriba con el “require”
-        //Buscamos con Mongoose un único documento que coincida con el id indicado
+        const autorDB = await Autor.findOne({ _id: id })
         console.log(autorDB) //Para probarlo por consola
-        res.render('crud/editar-autor', { //Para mostrar el objeto en la vista "editar", que tenemos que crear
+        res.render('crud/editar-autor', { //Para mostrar el objeto en la vista "editar"
             autor: autorDB,
             error: false
         })
@@ -43,14 +38,11 @@ router.delete('/:id', async (req, res) => {
     const id = req.params.id;
     console.log('id desde backend', id)
     try {
-        //En la documentación de Mongoose podremos encontrar la
-        //siguiente función para eliminar
+        // Siguiente función para eliminar
         const autorDB = await Autor.findByIdAndDelete({ _id: id });
         console.log(autorDB)
-        // https://stackoverflow.com/questions/27202075/expressjs-res-redirect-not-working-as-expected
-        // res.redirect('/autor') //Esto daría un error, tal y como podemos ver arriba
         if (!autorDB) {
-            res.json({ 
+            res.json({
                 estado: false,
                 mensaje: 'No se puede eliminar el autor.'
             })
@@ -59,7 +51,7 @@ router.delete('/:id', async (req, res) => {
                 estado: true,
                 mensaje: 'autor eliminado.'
             })
-        } 
+        }
     } catch (error) {
         console.log(error)
     }

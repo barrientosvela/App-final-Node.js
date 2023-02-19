@@ -4,6 +4,7 @@
         <!-- Será el listado de pokemon -->
         <div class="container">
             <h1 class="p-5 text-center">Todos los autores</h1>
+            <h5 class="pb-5 text-center">Si estás buscando libros por autor, estás en el lugar correcto.</h5>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <% if (arrayAutor.length> 0) { %>
                     <!--Haremos el foreach para recorrer el array-->
@@ -14,9 +15,9 @@
                                 <div class="card-body">
                                     <a href="autores/<%= autor.id %>"><img id="img-editar"
                                         src="../images/editar.png" alt="editar"></a>
-                                    <h1>
+                                    <h2>
                                         <%= autor.nombre %>
-                                    </h1>
+                                    </h2>
                                     <p class="card-text">
                                         <%= autor.descripcion %>
                                     </p>
