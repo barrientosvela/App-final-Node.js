@@ -1,4 +1,4 @@
-<%- include("template/cabecera.ejs", {tituloWeb: 'Detalles de la Autor' }) %>
+<%- include("../template/cabecera.ejs", {tituloWeb: 'Detalles de la Autor' }) %>
     <div class="container">
         <h1 class="p-5 text-center">Editar Autor</h1>
     </div>
@@ -28,7 +28,7 @@
         </div>
         <% } %>
 
-            <%- include("template/footer.ejs") %>
+            <%- include("../template/footer.ejs") %>
                 <script>
                     const formEditar = document.querySelector('#editar');
                     formEditar.addEventListener('submit', async (e) => {

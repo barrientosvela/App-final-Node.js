@@ -3,7 +3,7 @@ const Autor = require('../models/autores');
 const router = express.Router();
 
 router.get('/crear-autor', (req, res) => {
-    res.render('crear-autor'); //nueva vista que llamaremos Crear
+    res.render('crud/crear-autor'); //nueva vista que llamaremos Crear
 })
 
 router.get('/', async (req, res) => {
@@ -27,13 +27,13 @@ router.get('/:id', async (req, res) => { //El id vendrá por el GET (barra de di
         //Esta variable “Pokemon” está definida arriba con el “require”
         //Buscamos con Mongoose un único documento que coincida con el id indicado
         console.log(autorDB) //Para probarlo por consola
-        res.render('editar-autor', { //Para mostrar el objeto en la vista "editar", que tenemos que crear
+        res.render('crud/editar-autor', { //Para mostrar el objeto en la vista "editar", que tenemos que crear
             autor: autorDB,
             error: false
         })
     } catch (error) { //Si el id indicado no se encuentra
         console.log('Se ha producido un error', error)
-        res.render('editar-autor', { //Mostraremos el error en la vista "editar"
+        res.render('crud/editar-autor', { //Mostraremos el error en la vista "editar"
             error: true,
             mensaje: 'autor no encontrado!'
         })

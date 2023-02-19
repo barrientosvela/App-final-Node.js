@@ -3,7 +3,7 @@ const Editorial = require('../models/editoriales');
 const router = express.Router();
 
 router.get('/crear-editorial', (req, res) => {
-    res.render('crear-editorial'); //nueva vista que llamaremos Crear
+    res.render('crud/crear-editorial'); //nueva vista que llamaremos Crear
 })
 
 router.get('/', async (req, res) => {
@@ -27,13 +27,13 @@ router.get('/:id', async (req, res) => { //El id vendrá por el GET (barra de di
         //Esta variable “Pokemon” está definida arriba con el “require”
         //Buscamos con Mongoose un único documento que coincida con el id indicado
         console.log(editorialDB) //Para probarlo por consola
-        res.render('editar-editorial', { //Para mostrar el objeto en la vista "detalle", que tenemos que crear
+        res.render('crud/editar-editorial', { //Para mostrar el objeto en la vista "detalle", que tenemos que crear
             editorial: editorialDB,
             error: false
         })
     } catch (error) { //Si el id indicado no se encuentra
         console.log('Se ha producido un error', error)
-        res.render('editar-editorial', { //Mostraremos el error en la vista "detalle"
+        res.render('crud/editar-editorial', { //Mostraremos el error en la vista "detalle"
             error: true,
             mensaje: 'La editorial no encontrado!'
         })

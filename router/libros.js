@@ -3,7 +3,7 @@ const Libros = require('../models/libros');
 const router = express.Router();
 
 router.get('/crear', (req, res) => {
-    res.render('crear-libro'); //nueva vista que llamaremos Crear
+    res.render('crud/crear-libro'); //nueva vista que llamaremos Crear
 })
 
 
@@ -26,13 +26,13 @@ router.get('/:id', async (req, res) => { //El id vendrá por el GET (barra de di
         //Esta variable “Libro” está definida arriba con el “require”
         //Buscamos con Mongoose un único documento que coincida con el id indicado
         console.log(LibroDB) //Para probarlo por consola
-        res.render('editar-libro', { //Para mostrar el objeto en la vista "detalle", que tenemos que crear
+        res.render('crud/editar-libro', { //Para mostrar el objeto en la vista "detalle", que tenemos que crear
             libro: LibroDB,
             error: false
         })
     } catch (error) { //Si el id indicado no se encuentra
         console.log('Se ha producido un error', error)
-        res.render('detalle', { //Mostraremos el error en la vista "detalle"
+        res.render('crud/editar-libro', { //Mostraremos el error en la vista "detalle"
             error: true,
             mensaje: 'Libro no encontrado!'
         })
@@ -43,7 +43,7 @@ router.delete('/:id', async (req, res) => {
     try {
         const LibroDB = await Libros.findByIdAndDelete({ _id: id });
         if (!LibroDB) {
-            res.json({ 
+            res.json({
                 estado: false,
                 mensaje: 'No se puede eliminar el Libro.'
             })
@@ -52,7 +52,7 @@ router.delete('/:id', async (req, res) => {
                 estado: true,
                 mensaje: 'Libro eliminado.'
             })
-        } 
+        }
     } catch (error) {
         console.log(error)
     }
@@ -77,7 +77,6 @@ router.put('/:id', async (req, res) => {
         })
     }
 })
-
 
 router.post('/', async (req, res) => {
     const body = req.body

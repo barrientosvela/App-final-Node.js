@@ -27,6 +27,7 @@ app.set('view engine', 'ejs');
 
 //Peticiones básicas HTTP
 app.use('/', require('./router/rutas'))
+app.use('/registro', require('./router/rutas'))
 app.use('/libros', require('./router/libros'))
 app.use('/autores', require('./router/autores'))
 app.use('/editoriales', require('./router/editoriales'))

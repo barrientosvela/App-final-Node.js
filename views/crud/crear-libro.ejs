@@ -1,11 +1,10 @@
-<%- include("template/cabecera.ejs", {tituloWeb: "Crear libro" })%>
-<div class="mx-auto col-md-4 p-5 shadow rounded mt-4">
+<%- include("../template/cabecera.ejs", {tituloWeb: "Crear libro" })%>
+    <div class="mx-auto col-md-4 p-5 shadow rounded mt-4">
         <h1>Crear nuevo Libro</h1>
         <div class="cancelar">
-            <a href="/libros" id="img-cancelar"><img id="img-cancelar" src="../images/cerrar.png"
-                    alt="cancelar"></a>
+            <a href="/libros" id="img-cancelar"><img id="img-cancelar" src="../images/cerrar.png" alt="cancelar"></a>
         </div>
-        <form action="/libros" class="my-2" method="post">
+        <form class="my-2" action="/libros" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="username">Titulo del libro:</label>
                 <input id="nombre" type="text" class="form-control" name="titulo">
@@ -26,4 +25,4 @@
         </form>
     </div>
 
-    <%- include("template/footer.ejs")%>
+    <%- include("../template/footer.ejs")%>

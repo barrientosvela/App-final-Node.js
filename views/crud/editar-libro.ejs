@@ -1,51 +1,63 @@
-<%- include("template/cabecera.ejs", {tituloWeb: 'Detalles de la Editorial' }) %>
+<%- include("../template/cabecera.ejs", {tituloWeb: 'Detalles del Libro' }) %>
     <div class="container">
-        <h1 class="p-5 text-center">Editar Editorial</h1>
+        <h1 class="p-5 text-center">Editar Libro</h1>
     </div>
     <% if (!error) { %>
         <div class="mx-auto col-md-4 p-5 shadow rounded mt-4">
-            <form id="editar" data-id="<%= editorial.id %>">
+            <form id="editar" data-id="<%= libro.id %>">
                 <div class="cancelar">
-                    <a href="/editoriales" id="img-cancelar"><img id="img-cancelar" src="../images/cerrar.png"
+                    <a href="/libros" id="img-cancelar"><img id="img-cancelar" src="../images/cerrar.png"
                             alt="cancelar"></a>
                 </div>
                 <div class="form-group">
-                    <label for="username">Nombre del Editorial:</label>
-                    <input type="text" value="<%= editorial.nombre %>" class="form-control my-2" name="nombre"
+                    <label for="username">Nombre del libro:</label>
+                    <input type="text" value="<%= libro.titulo %>" class="form-control my-2" name="titulo"
                         id="nombreInput">
                 </div>
                 <div class="form-group">
                     <label for="username">Tipo:</label>
-                    <input type="text" value="<%= editorial.descripcion %>" class="form-control my-2" name="descripcion" id="tipoInput">
+                    <input type="text" value="<%= libro.autor %>" class="form-control my-2" name="autor" id="tipoInput">
+                </div>
+                <div class="form-group">
+                    <label for="username">Descripción:</label>
+                    <input type="text" value="<%= libro.genero %>" class="form-control my-2" name="genero"
+                        id="descripcionInput">
+                </div>
+                <div class="form-group">
+                    <label for="username">Número de páginas:</label>
+                    <input type="text" value="<%= libro.paginas %>" class="form-control my-2" name="paginas"
+                        id="tipoInput">
                 </div>
                 <button class="btn btn-sm" type="submit">
                     <img id="img-confirmar" src="../images/cheque.png" alt="confirmar">
                 </button>
-                <button class="btn borrar btn-sm" data-id="<%= editorial.id %>">
+                <button class="btn borrar btn-sm" data-id="<%= libro.id %>">
                     <img id="img-borrar" src="../images/eliminar.png" alt="eliminar">
                 </button>
             </form>
         </div>
         <% } %>
 
-            <%- include("template/footer.ejs") %>
+            <%- include("../template/footer.ejs") %>
                 <script>
                     const formEditar = document.querySelector('#editar');
                     formEditar.addEventListener('submit', async (e) => {
                         e.preventDefault()
-                        const nombre = formEditar.elements['nombre'].value
-                        const descripcion = formEditar.elements['descripcion'].value
+                        const titulo = formEditar.elements['titulo'].value
+                        const autor = formEditar.elements['autor'].value
+                        const genero = formEditar.elements['genero'].value
+                        const paginas = formEditar.elements['paginas'].value
                         const id = formEditar.dataset.id
-                        const data = await fetch(`/editoriales/${id}`, {
+                        const data = await fetch(`/libros/${id}`, {
                             method: 'PUT',
                             headers: {
                                 'Content-Type': 'application/json'
                             },
-                            body: JSON.stringify({ nombre, descripcion})
+                            body: JSON.stringify({ titulo, autor, genero, paginas })
                         })
                         const res = await data.json()
                         if (res.estado) {
-                            window.location.href = '/editoriales'
+                            window.location.href = '/libros'
                         } else {
                             console.log(res)
                         }
@@ -54,13 +66,13 @@
                     const btnEliminar = document.querySelector('.borrar')
                     btnEliminar.addEventListener('click', async () => {
                         try {
-                            const data = await fetch(`/editoriales/${btnEliminar.dataset.id}`, {
+                            const data = await fetch(`/libros/${btnEliminar.dataset.id}`, {
                                 method: 'delete'
                             })
                             const res = await data.json()
                             console.log(res)
                             if (res.estado) {
-                                window.location.href = '/editoriales'
+                                window.location.href = '/libros'
                             } else {
                                 console.log(res)
                             }
